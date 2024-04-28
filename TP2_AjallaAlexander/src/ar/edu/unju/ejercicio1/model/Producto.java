@@ -1,7 +1,7 @@
 package ar.edu.unju.ejercicio1.model;
 
 public class Producto {
-	private int producto;
+	private Integer codigo;
 	private String descripcion;
 	private Double precioU;
 	OrigenFabricacion origen;
@@ -9,21 +9,21 @@ public class Producto {
 	
 	public Producto() {}
 
-	public Producto(int producto, String descripcion, Double precioU, OrigenFabricacion origen, Categoria categoria) {
+	public Producto(Integer codigo, String descripcion, Double precioU, OrigenFabricacion origen, Categoria categoria) {
 		super();
-		this.producto = producto;
+		this.codigo = codigo;
 		this.descripcion = descripcion;
 		this.precioU = precioU;
 		this.origen = origen;
 		this.categoria = categoria;
 	}
 
-	public int getProducto() {
-		return producto;
+	public int getCodigo() {
+		return codigo;
 	}
 
-	public void setProducto(int producto) {
-		this.producto = producto;
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getDescripcion() {
@@ -60,7 +60,7 @@ public class Producto {
 	
 	@Override
 	public String toString() {
-		return "Producto [producto=" + producto + ", descripcion=" + descripcion + ", precioU=" + precioU + ", origen="
+		return "Producto [codigo=" + codigo + ", descripcion=" + descripcion + ", precioU=" + precioU + ", origen="
 				+ origen + ", categoria=" + categoria + "]";
 	}
 
