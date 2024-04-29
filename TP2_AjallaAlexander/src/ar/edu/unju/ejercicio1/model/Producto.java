@@ -7,6 +7,14 @@ public class Producto {
 	OrigenFabricacion origen;
 	Categoria categoria;
 	
+	public enum OrigenFabricacion {
+		ARGENTINA,CHINA,
+		BRASIL,URUGUAY;
+	}
+	public enum Categoria {
+		TELEFONIA,INFORMATICA,
+		ELECTROHOGAR,HERRAMIENTAS;
+	}
 	public Producto() {}
 
 	public Producto(Integer codigo, String descripcion, Double precioU, OrigenFabricacion origen, Categoria categoria) {
@@ -17,7 +25,13 @@ public class Producto {
 		this.origen = origen;
 		this.categoria = categoria;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Producto [codigo=" + codigo + ", descripcion=" + descripcion + ", precioU=" + precioU + ", origen="
+				+ origen + ", categoria=" + categoria + "]";
+	}
+	
 	public int getCodigo() {
 		return codigo;
 	}
@@ -56,12 +70,6 @@ public class Producto {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
-	}
-	
-	@Override
-	public String toString() {
-		return "Producto [codigo=" + codigo + ", descripcion=" + descripcion + ", precioU=" + precioU + ", origen="
-				+ origen + ", categoria=" + categoria + "]";
 	}
 
 }

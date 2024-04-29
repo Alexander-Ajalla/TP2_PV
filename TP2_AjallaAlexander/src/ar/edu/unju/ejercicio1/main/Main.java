@@ -3,10 +3,9 @@ package ar.edu.unju.ejercicio1.main;
 import java.util.List;
 import java.util.Scanner;
 
-import ar.edu.unju.ejercicio1.model.Categoria;
-import ar.edu.unju.ejercicio1.model.OrigenFabricacion;
 import ar.edu.unju.ejercicio1.model.Producto;
-
+import ar.edu.unju.ejercicio1.model.Producto.OrigenFabricacion;
+import ar.edu.unju.ejercicio1.model.Producto.Categoria;
 
 public class Main {
 	private static Scanner scanner;
@@ -26,13 +25,14 @@ public class Main {
 				option = scanner.nextInt();
 				scanner.nextLine();
 				switch (option) {
-				case 1: crearProducto();
+				case 1:
+					crearProducto();
 					break;
 				case 2:
-					System.out.println("Mostrar Productos");
+					//mostrarProducto();
 					break;
 				case 3:
-					System.out.println("Modificar Producto");
+					//modificarProducto();
 					break;
 				case 4: 
 					System.out.println("Fin del programa");
@@ -64,13 +64,10 @@ public class Main {
 		    }
 		 }
 		producto.setPrecioU(precio);
-		
-		OrigenFabricacion origenFabricacion = obtenerOrigenFabricacion();
-		producto.setOrigen(origenFabricacion);
-		
+		OrigenFabricacion origen = obtenerOrigenFabricacion();
+		producto.setOrigen(origen);
 		Categoria categoria = obtenerCategoria();
 		producto.setCategoria(categoria);
-		
 		productos.add(producto);
 		System.out.println("Producto creado :D");
 	}
@@ -89,11 +86,11 @@ public class Main {
                 opcion = scanner.nextInt();
                 scanner.nextLine();
                 if (opcion < 1 || opcion > 4) {
-                    System.out.println("Opción no válida. Intente nuevamente...");
+                    System.out.println("Opncion invalida");
                 }
             } else {
                 scanner.nextLine();
-                System.out.println("Opción no válida. Intente nuevamente...");
+                System.out.println("Opcion invalida");
             }
 		} while(opcion < 1 || opcion > 4);
 		
@@ -102,29 +99,30 @@ public class Main {
 		return origen;
 	}
 	public static Categoria obtenerCategoria () {
-		int opcion_categoria = 0;
+		int opcion = 0;
 		do {
 			System.out.println("---- Categoria ----");
-			System.out.println("1 - Telefonía");
-			System.out.println("2 - Informática");
+			System.out.println("1 - Telefonia");
+			System.out.println("2 - Informatica");
 			System.out.println("3 - Electro hogar");
 			System.out.println("4 - Herramientas");
 			System.out.println("Elija una opcion: ");
 			
 			if (scanner.hasNextInt()) {
-                opcion_categoria = scanner.nextInt();
+                opcion = scanner.nextInt();
                 scanner.nextLine();
-                if (opcion_categoria < 1 || opcion_categoria > 4) {
-                    System.out.println("Opción no válida. Intente nuevamente...");
+                if (opcion < 1 || opcion > 4) {
+                    System.out.println("Opcion invalida");
                 }
             } else {
                 scanner.nextLine();
-                System.out.println("Opción no válida. Intente nuevamente...");
+                System.out.println("Opcion invalida");
             }
-		} while(opcion_categoria < 1 || opcion_categoria > 4);
+		} while(opcion < 1 || opcion > 4);
 		
-		Categoria categoria = 
-				Categoria.values()[opcion_categoria - 1];
+		Categoria categoria = Categoria.values()[opcion - 1];
 		return categoria;
 	}
+	
+
 }
