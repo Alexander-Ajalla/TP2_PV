@@ -124,5 +124,12 @@ public class Main {
 		return categoria;
 	}
 	
-
+	public static void mostrarProductos() {
+		if (productos.isEmpty()) {
+			System.out.println("La lista de producto esta vacía");
+		} else {
+			System.out.println("---- Lista de productos ----");
+			productos.forEach(product -> System.out.println(product));			
+		}
+	}
 }
