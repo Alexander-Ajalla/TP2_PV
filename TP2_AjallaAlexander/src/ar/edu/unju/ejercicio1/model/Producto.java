@@ -32,7 +32,7 @@ public class Producto {
 				+ origen + ", categoria=" + categoria + "]";
 	}
 	
-	public int getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 

@@ -29,10 +29,10 @@ public class Main {
 					crearProducto();
 					break;
 				case 2:
-					//mostrarProducto();
+					mostrarProducto();
 					break;
 				case 3:
-					//modificarProducto();
+					modificarProducto();
 					break;
 				case 4: 
 					System.out.println("Fin del programa");
@@ -124,12 +124,82 @@ public class Main {
 		return categoria;
 	}
 	
-	public static void mostrarProductos() {
+	public static void mostrarProducto() {
 		if (productos.isEmpty()) {
 			System.out.println("La lista de producto esta vacía");
 		} else {
 			System.out.println("---- Lista de productos ----");
 			productos.forEach(product -> System.out.println(product));			
 		}
+	}
+	
+	public static void modificarProducto () {
+		if (productos.isEmpty()) {
+			 System.out.println("Lista de productos vacía...");
+	    } else {
+	        System.out.print("Ingrese el código del producto a modificar: ");
+	        String codigo = scanner.nextLine();
+	        Producto productoFounded = null;
+	        for (Producto producto : productos) {
+	        	if (producto.getCodigo().equals(codigo)) {
+	        		productoFounded = producto;
+	        		break;
+	             }
+	        }
+	        if (productoFounded == null) {
+	        	System.out.println("Producto no encontrado.");
+	        } else {
+	        	int opcion = 0;
+	        	do {
+	        		System.out.println("---- Modificar Producto ----");
+	                System.out.println("1 - Descripción");
+	                System.out.println("2 - Precio");
+	                System.out.println("3 - Origen de Fabricación");
+	                System.out.println("4 - Categoría");
+	                System.out.println("5 - Salir");
+	                System.out.print("Elija una opción: ");
+	                
+	                opcion = scanner.nextInt();
+	                scanner.nextLine(); 
+	                
+	                switch (opcion) {
+						case 1: 
+							System.out.println("Ingrese la nueva descripción del producto:");
+							productoFounded.setDescripcion(scanner.nextLine());
+							break;
+						case 2:
+							double precio;
+							while (true) {
+								System.out.println("Ingrese el nuevo precio del producto:");
+							    String input = scanner.nextLine();
+							    try {
+							    	precio = Double.parseDouble(input);
+							        break;
+							    } catch (NumberFormatException e) {
+							    	System.out.println("Tipo de dato no válido");
+							    }
+							 }
+							productoFounded.setPrecioU(precio);
+							break;
+						case 3:
+							OrigenFabricacion origen = obtenerOrigenFabricacion();
+							productoFounded.setOrigen(origen);
+							break;
+						case 4:
+							Categoria categoria = obtenerCategoria();
+							productoFounded.setCategoria(categoria);
+							break;
+						case 5:
+							System.out.println("...Fin de la modificacioon");
+							break;
+						default:
+							System.out.println("xxxx Opcion incorrecta xxxx");
+							break;
+					}
+	        	} while(opcion != 5);    	
+	        	
+                System.out.println("El producto ha hizo modificado :D");
+	        }
+	    }
 	}
 }
